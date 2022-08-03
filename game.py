@@ -188,6 +188,18 @@ def main():
                 run = False
 
        # bird.move()
+        for pipe in pipes:
+            if pipe.collide(bird):
+                pass
+                
+            if pipe.x +pipe.PIPE_TOP.get_width()<0:
+                rem.append(pipe)
+            if not pipe.passed and pipe.x <bird.x:
+                pipe.passed=True
+                add_pipe=True
+                
+            pipe.move()
+    
         base.move()
         draw_window(win, bird, pipes, base)
 
